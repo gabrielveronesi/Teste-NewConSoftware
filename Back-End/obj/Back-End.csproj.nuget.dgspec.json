@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Implantaçao 02\\documents\\Back-End\\Back-End.csproj": {}
+    "C:\\Users\\Implantaçao 02\\Desktop\\Teste-NewConSoftware\\Back-End\\Back-End.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Implantaçao 02\\documents\\Back-End\\Back-End.csproj": {
+    "C:\\Users\\Implantaçao 02\\Desktop\\Teste-NewConSoftware\\Back-End\\Back-End.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Implantaçao 02\\documents\\Back-End\\Back-End.csproj",
+        "projectUniqueName": "C:\\Users\\Implantaçao 02\\Desktop\\Teste-NewConSoftware\\Back-End\\Back-End.csproj",
         "projectName": "Back-End",
-        "projectPath": "C:\\Users\\Implantaçao 02\\documents\\Back-End\\Back-End.csproj",
+        "projectPath": "C:\\Users\\Implantaçao 02\\Desktop\\Teste-NewConSoftware\\Back-End\\Back-End.csproj",
         "packagesPath": "C:\\Users\\Implantaçao 02\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Implantaçao 02\\documents\\Back-End\\obj\\",
+        "outputPath": "C:\\Users\\Implantaçao 02\\Desktop\\Teste-NewConSoftware\\Back-End\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Implantaçao 02\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
+            "MySql.Data.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.22, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
