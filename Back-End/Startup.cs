@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Back_End.Data;
+using Back_End.Data.Interfaces;
+using Back_End.Data.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,7 +40,9 @@ namespace Back_End
             services.AddDbContext<DataContext>(
             context => context.UseSqlServer(Configuration.GetConnectionString("MySqlConnection")
             ));
-            
+
+            //Configurando injeção de dependencia
+            services.AddTransient<IPontoTuristico, PontoTuristicoRepository>();
 
         }
 
