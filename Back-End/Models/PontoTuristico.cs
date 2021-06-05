@@ -9,6 +9,9 @@ namespace Back_End.Models
 
         [MaxLength(100, ErrorMessage = "Este campo deve conter menos que 100 catacteres")]
         public string Descricao { get; set; }
-        public Localizacao Localizacao { get; set; }
+        public string Localizacao { get; set; }
+        public string Cidade { get; set; }
+        public string Estado { get; set; }
+
     }
 }

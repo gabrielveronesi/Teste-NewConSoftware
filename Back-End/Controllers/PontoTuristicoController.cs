@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Back_End.Data.Interfaces;
+using Back_End.Helpers;
 using Back_End.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +17,6 @@ namespace Back_End.Controllers
         public PontoTuristicoController(IPontoTuristico repoPontoTuristico)
         {
             _repoPontoTuristico = repoPontoTuristico;
-            
         }
 
 
@@ -24,10 +25,10 @@ namespace Back_End.Controllers
         /// </summary>
         [HttpGet]
         [Route("listar")]
-        public async Task<ActionResult<List<PontoTuristico>>> ListarPontos()
+        public async Task<IQueryable<PontoTuristico>> ListarPontos([FromQuery]PaginaParametros paginaParametros)
         {
-            var pontos = await _repoPontoTuristico.GetAllPontoTuristicoAsync();
-            return Ok(pontos);
+            var pontos = await _repoPontoTuristico.GetAllPontoTuristicoAsync(paginaParametros);
+            return pontos.AsQueryable();
         }
 
         /// <summary>
@@ -41,8 +42,11 @@ namespace Back_End.Controllers
                 {
                     Nome = model.Nome,
                     Descricao = model.Descricao,
-                    Localizacao = model.Localizacao
+                    Localizacao = model.Localizacao,
+                    Cidade = model.Cidade,
+                    Estado = model.Estado
                 };
+                
                await _repoPontoTuristico.AddPontoTuristicoAsync(Ponto);
                return Ok(Ponto);
                
