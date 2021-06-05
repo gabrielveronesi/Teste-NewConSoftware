@@ -51,5 +51,16 @@ namespace Back_End.Controllers
                return Ok(Ponto);
                
         }
+
+        /// <summary>
+        /// Método responsavel para retornar 1 Ponto pelo ID
+        /// </summary>
+        [HttpGet("{id}")]
+        public IActionResult PegarPontoId(int id)
+        {
+            var ponto =  _repoPontoTuristico.GetPontoTuristicoByIdAsync(id);
+
+            return Ok(ponto);
+        }
     }
 }

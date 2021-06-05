@@ -9,6 +9,6 @@ namespace Back_End.Data.Interfaces
     {
         Task<PontoTuristico> AddPontoTuristicoAsync(PontoTuristico pontoTuristico);
         Task<List<PontoTuristico>> GetAllPontoTuristicoAsync(PaginaParametros paginaParametros);
-        PontoTuristico GetPontoTuristicoByIdAsync(int Id);
+        PontoTuristico GetPontoTuristicoByIdAsync(int id);
     }
 }

@@ -52,9 +52,15 @@ namespace Back_End.Data.Repository
             return await query.ToListAsync();
         }
 
-        public PontoTuristico GetPontoTuristicoByIdAsync(int Id)
+        public PontoTuristico GetPontoTuristicoByIdAsync(int id)
         {
-            throw new System.NotImplementedException();
+            IQueryable<PontoTuristico> query = _context.PontoTuristico;
+
+            query = query.AsNoTracking()
+                         .OrderBy(e => e.Id)
+                         .Where(e => e.Id == id);
+
+            return query.FirstOrDefault();
         }
     }
 }
