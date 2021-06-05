@@ -36,7 +36,9 @@ namespace Back_End
 
             //Configurando o banco de dados
             services.AddDbContext<DataContext>(
-            context => context.UseMySQL(Configuration.GetConnectionString("MySqlConnection")));
+            context => context.UseSqlServer(Configuration.GetConnectionString("MySqlConnection")
+            ));
+            
 
         }
 

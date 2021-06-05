@@ -6,17 +6,17 @@ namespace Back_End.Data
 {
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) : base(options) {}
+        public DbSet<PontoTuristico> PontoTuristico { get; set; }
 
-        public DbSet<PontoTuristico> PontoTuristico { get; set; } 
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-    
+
             builder.ApplyConfiguration(new PontoTuristicoConfiguration());
-            
+
         }
-        
+
     }
 }
