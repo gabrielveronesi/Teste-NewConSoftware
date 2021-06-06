@@ -44,10 +44,15 @@ namespace Back_End
             //Configurando injeção de dependencia
             services.AddTransient<IPontoTuristico, PontoTuristicoRepository>();
 
+            
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //Configurando cors
+            app.UseCors( x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
