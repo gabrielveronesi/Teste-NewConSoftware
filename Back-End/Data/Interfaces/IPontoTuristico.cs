@@ -8,7 +8,7 @@ namespace Back_End.Data.Interfaces
     public interface IPontoTuristico
     {
         Task<PontoTuristico> AddPontoTuristicoAsync(PontoTuristico pontoTuristico);
-        Task<List<PontoTuristico>> GetAllPontoTuristicoAsync(PaginaParametros paginaParametros);
+        Task<PaginaLista<PontoTuristico>> GetAllPontoTuristicoAsync(PaginaParametros paginaParametros);
         PontoTuristico GetPontoTuristicoByIdAsync(int id);
     }
 }

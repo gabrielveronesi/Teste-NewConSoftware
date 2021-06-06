@@ -23,7 +23,7 @@ namespace Back_End.Data.Repository
             return pontoTuristico;
         }
 
-        public async Task<List<PontoTuristico>> GetAllPontoTuristicoAsync(PaginaParametros paginaParametros)
+        public async Task<PaginaLista<PontoTuristico>> GetAllPontoTuristicoAsync(PaginaParametros paginaParametros)
         {
             IQueryable<PontoTuristico> query = _context.PontoTuristico;
             query = query.AsNoTracking().OrderBy(a => a.Id).IgnoreAutoIncludes<PontoTuristico>();
@@ -47,9 +47,9 @@ namespace Back_End.Data.Repository
                                             
                                                   );
 
-                                            
+            //return await query.ToListAsync();
+            return await PaginaLista<PontoTuristico>.CreateAsync(query, paginaParametros.PaginaNumero, paginaParametros.PaginaTamanho);
 
-            return await query.ToListAsync();
         }
 
         public PontoTuristico GetPontoTuristicoByIdAsync(int id)
