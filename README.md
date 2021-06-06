@@ -51,3 +51,10 @@ Instalar SDKs
 cd Back-End
 dotnet run
 ```
+
+
+# Observações finais
+
+- Coloquei uma carga inicial no banco de dados.
+
+- Front-end incompleto, fiz mais focano na API. (Pouco conhecimento em Front-End). porém todos os testes podem ser feitos através do SWAGGER.
