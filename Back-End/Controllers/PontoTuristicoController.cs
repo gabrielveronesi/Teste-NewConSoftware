@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Back_End.Data.Interfaces;
 using Back_End.Helpers;
 using Back_End.Models;
+using Back_End.Validator;
 using Microsoft.AspNetCore.Mvc;
 using QRExpresso.API.Controllers;
 
@@ -15,22 +16,14 @@ namespace Back_End.Controllers
     {
 
         private readonly IPontoTuristico _repoPontoTuristico;
-        public PontoTuristicoController(IPontoTuristico repoPontoTuristico)
+        private readonly PontoTuristicoValidator _validador;
+        public PontoTuristicoController(IPontoTuristico repoPontoTuristico,
+                                        PontoTuristicoValidator validador)
         {
             _repoPontoTuristico = repoPontoTuristico;
+            _validador = validador;
         }
 
-
-        /// <summary>
-        /// Listar todos os pontos turisticos
-        /// </summary>
-        [HttpGet]
-        [Route("listar")]
-        public async Task<ActionResult<List<PontoTuristico>>> ListarPontos([FromQuery]PaginaParametros paginaParametros)
-        {
-            var pontos = await _repoPontoTuristico.GetAllPontoTuristicoAsync(paginaParametros);
-            return Resposta(true, new{pontos});
-        }
 
         /// <summary>
         /// Criar novo ponto turistico
@@ -39,6 +32,9 @@ namespace Back_End.Controllers
         [Route("novo")]
         public async Task<ActionResult> NovoPonto(PontoTuristico model)
         {
+            var validacao = _validador.Validate(model);
+            if (validacao.IsValid)
+            {
                 var Ponto = new PontoTuristico()
                 {
                     Nome = model.Nome,
@@ -47,10 +43,24 @@ namespace Back_End.Controllers
                     Cidade = model.Cidade,
                     Estado = model.Estado
                 };
-                
-               await _repoPontoTuristico.AddPontoTuristicoAsync(Ponto);
-               return Ok(Ponto);
-               
+
+                await _repoPontoTuristico.AddPontoTuristicoAsync(Ponto);
+                return Resposta(true, Ponto);
+            }
+
+            return Resposta(false, validacao.ToString());
+
+        }
+
+        /// <summary>
+        /// Listar todos os pontos turisticos
+        /// </summary>
+        [HttpGet]
+        [Route("listar")]
+        public async Task<ActionResult<List<PontoTuristico>>> ListarPontos([FromQuery] PaginaParametros paginaParametros)
+        {
+            var pontos = await _repoPontoTuristico.GetAllPontoTuristicoAsync(paginaParametros);
+            return Resposta(true, new { pontos });
         }
 
         /// <summary>
@@ -59,9 +69,8 @@ namespace Back_End.Controllers
         [HttpGet("{id}")]
         public IActionResult PegarPontoId(int id)
         {
-            var ponto =  _repoPontoTuristico.GetPontoTuristicoByIdAsync(id);
-
-            return Ok(ponto);
+            var ponto = _repoPontoTuristico.GetPontoTuristicoByIdAsync(id);
+            return Resposta(true, ponto);
         }
     }
 }

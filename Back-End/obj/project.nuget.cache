@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "axEfPWj0wtVm+H/+cACpxRcHlK+Z4uyzt8k1BPnxnHVPNb1WDSeOD10hCTczh3Q93A9W1Xbt0DfHTLJdf6v9yA==",
+  "dgSpecHash": "QVvccvrZxN99hgvhYKx04OYoJkaOZidjQy2eTCTA1Z9IMrWQUj7keE3PpiRQnBt//GMBKeZj3KB17oUrEHqF+w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Implantaçao 02\\Desktop\\Teste-NewConSoftware\\Back-End\\Back-End.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Implantaçao 02\\.nuget\\packages\\fluentvalidation\\10.2.3\\fluentvalidation.10.2.3.nupkg.sha512",
     "C:\\Users\\Implantaçao 02\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Implantaçao 02\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Implantaçao 02\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",

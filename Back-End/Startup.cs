@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Back_End.Data;
 using Back_End.Data.Interfaces;
 using Back_End.Data.Repository;
+using Back_End.Validator;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -43,6 +44,7 @@ namespace Back_End
 
             //Configurando injeção de dependencia
             services.AddTransient<IPontoTuristico, PontoTuristicoRepository>();
+            services.AddTransient<PontoTuristicoValidator, PontoTuristicoValidator>();
 
             
 

@@ -41,14 +41,22 @@ function chamaId(r) {
   let data = fazGet("http://localhost:63876/api/pontos/" + i);
   let ponto = JSON.parse(data);
 
-  alert(ponto.descricao);
+  alert(ponto.data.descricao);
 }
 
 function main() {
-  let data = fazGet("http://localhost:63876/api/pontos/listar");
-  let pontos = JSON.parse(data);
+  let xdata = fazGet("http://localhost:63876/api/pontos/listar");
+  console.log(xdata);
+  let json = JSON.parse(xdata);
+  console.log(json);
+  console.log(json.data.pontos);
+
+
+  let filtrado = json.data.pontos;
+
+
   let tabela = document.getElementById("tabela");
-  pontos.forEach((element) => {
+  json.data.pontos.forEach((element) => {
     let linha = criaLinha(element);
     tabela.appendChild(linha);
   });

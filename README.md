@@ -20,6 +20,7 @@ EntityFrameworkCore
 MySql.Data.EntityFrameworkCore
 Microsoft.EntityFrameworkCore.Design
 Microsoft.EntityFrameworkCore.Tools
+FluentValidation
 
 ```
 
