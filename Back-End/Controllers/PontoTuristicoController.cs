@@ -5,12 +5,13 @@ using Back_End.Data.Interfaces;
 using Back_End.Helpers;
 using Back_End.Models;
 using Microsoft.AspNetCore.Mvc;
+using QRExpresso.API.Controllers;
 
 namespace Back_End.Controllers
 {
     [Route("api/pontos")]
     [ApiController]
-    public class PontoTuristicoController : ControllerBase
+    public class PontoTuristicoController : MainController
     {
 
         private readonly IPontoTuristico _repoPontoTuristico;
@@ -25,10 +26,10 @@ namespace Back_End.Controllers
         /// </summary>
         [HttpGet]
         [Route("listar")]
-        public async Task<IQueryable<PontoTuristico>> ListarPontos([FromQuery]PaginaParametros paginaParametros)
+        public async Task<ActionResult<List<PontoTuristico>>> ListarPontos([FromQuery]PaginaParametros paginaParametros)
         {
             var pontos = await _repoPontoTuristico.GetAllPontoTuristicoAsync(paginaParametros);
-            return pontos.AsQueryable();
+            return Resposta(true, new{pontos});
         }
 
         /// <summary>
